@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dates Between</string>
+    <string name="copy_to_clipboard">Sao chép</string>
+    <string name="history">Lịch sử truy cập:</string>
+    <string name="clear_all">Xoá tất cả</string>
+
+<!--    message-->
+    <string name="coming_soon">Sắp cập nhập :></string>
+    <string name="err_msg_something_wrong">Có gì đó không đúng, vui lòng thử lại!</string>
+    <string name="err_msg_not_found">Không tìm được ứng dụng phù hợp</string>
+    <string name="not_found">Chưa có lịch sử nào được lưu lại</string>
+    <string name="remove_all">Xoá tất cả</string>
+    <string name="copy_success">Đã sao chép</string>
+    <string name="dialog_update_title">Có bản cập nhật mới</string>
+    <string name="dialog_update_des">Phiên bản hiện tại của bạn là: %old\n\nHiện đã có bản cập nhật mới (%new) , hãy cập nhật để có trãi nghiệm tốt nhất bạn nhé :></string>
+    <string name="dialog_update_btn_close">Đóng</string>
+    <string name="dialog_update_btn_ok">Cập nhật</string>
+    <string name="mode_link">Type: %s</string>
+    <string name="mode_deep_link">Deeplink</string>
+    <string name="mode_universal_link">Universal link</string>
+    <string name="mode_other">Other</string>
+</resources>
