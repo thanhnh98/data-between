@@ -7,7 +7,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlin.coroutines.CoroutineContext
 
-class BaseViewModel: ViewModel() {
+open class BaseViewModel: ViewModel() {
     private lateinit var job: Job
     lateinit var uiScope: CoroutineScope
     lateinit var ioContext: CoroutineContext

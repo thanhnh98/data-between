@@ -11,7 +11,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
 
-class DeepLinkApplication: Application(), LifecycleObserver, KodeinAware {
+class DateBetweenApplication: Application(), LifecycleObserver, KodeinAware {
     companion object{
         lateinit var appContext: Context
     }
@@ -23,7 +23,7 @@ class DeepLinkApplication: Application(), LifecycleObserver, KodeinAware {
     }
 
     override val kodein by Kodein.lazy {
-        import(androidXModule((this@DeepLinkApplication)))
+        import(androidXModule((this@DateBetweenApplication)))
         import(appModule)
         import(serviceModule)
         import(useCaseModule)

@@ -20,14 +20,18 @@ fun Activity.showMessage(msg: String){
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
 
-fun View.onClick(f: () -> Unit){
+fun <T: View> T.onClick(f: (T) -> Unit){
     setOnClickListener {
-        f.invoke()
+        f.invoke(it as T)
     }
 }
 
 fun EditText.text(): String{
     return text.toString()
+}
+
+fun Int.twoNumberOf(): String{
+    return if (this > 9) this.toString() else "0$this"
 }
 
 fun EditText.createDebounce(
