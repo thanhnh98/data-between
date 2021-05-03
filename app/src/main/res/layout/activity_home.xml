@@ -3,42 +3,400 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:background="@color/white"
         android:layout_width="match_parent"
+        android:background="@drawable/bg_primary_gradient"
         android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/tv_start_day"
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="start date"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:padding="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-        <TextView
-            android:id="@+id/tv_end_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="end date"
-            android:padding="10dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_start_day"
-            app:layout_constraintLeft_toLeftOf="@id/tv_start_day"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/guideline1">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/guideline2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title_begin_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày bắt đầu:"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_33"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tv_start_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title_begin_date"
+                    app:layout_constraintLeft_toLeftOf="@id/tv_title_begin_date"
+                    tools:text="21/21/2021"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="@drawable/bg_gray_transparent"
+                    android:textColor="@color/black_33"
+                    android:layout_marginTop="5dp"/>
+
+                <ImageView
+                    android:id="@+id/img_swap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_swap"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_title_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày kết thúc:"
+                    android:textColor="@color/black_33"/>
+
+
+                <TextView
+                    android:id="@+id/tv_end_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="21/21/2021"
+                    android:textColor="@color/black_33"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="@drawable/bg_gray_transparent"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"
+                    android:background="@drawable/btn_background"
+                    android:layout_marginTop="15dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:gravity="right"
+                    android:padding="10dp"/>
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5"
+                android:id="@+id/guideline2"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintLeft_toLeftOf="@id/guideline2"
+                app:layout_constraintRight_toRightOf="@id/guideline2"
+                android:background="@color/gray_f6"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toRightOf="@id/guideline2"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_33"
+                    android:text="Tuỳ chọn:"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb_weekend_t7"
+                        android:buttonTint="@color/black_33" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thứ 7"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb_weekend_cn"
+                        tools:checked="true"
+                        android:buttonTint="@color/black_33"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chủ nhật"/>
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb_holiday"
+                        android:buttonTint="@color/black_33"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tv_label_holiday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ngày lễ"
+                        app:layout_constraintTop_toTopOf="@id/cb_holiday"
+                        app:layout_constraintBottom_toBottomOf="@id/cb_holiday"
+                        app:layout_constraintLeft_toRightOf="@id/cb_holiday"
+                        />
+
+                    <ImageView
+                        android:id="@+id/img_edit_list_holiday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_edit"
+                        android:padding="5dp"
+                        app:layout_constraintLeft_toRightOf="@+id/tv_label_holiday"
+                        app:layout_constraintTop_toTopOf="@id/tv_label_holiday"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_label_holiday"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/tv_date_between"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_error"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="between"
-            android:padding="10dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_end_day"
-            app:layout_constraintLeft_toLeftOf="@id/tv_start_day"/>
+            android:visibility="gone"
+            android:text="Ngày bắt đầu phải trước hoặc cùng với ngày kết thúc"
+            android:textColor="@color/md_red_A400"
+            tools:visibility="visible"
+            android:paddingLeft="10dp"
+            app:layout_constraintTop_toBottomOf="@id/guideline1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
 
-        <TextView
-            android:id="@+id/tv_date_swap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="swap"
-            android:padding="10dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_date_between"
-            app:layout_constraintLeft_toLeftOf="@id/tv_start_day"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/guideline1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/bg_border_white_primary_dark"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="50dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5"
+                android:id="@+id/guideline3"/>
+
+            <TextView
+                android:id="@+id/tv_total_not_filter_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="16sp"
+                android:text="Tổng cộng: "/>
+
+            <TextView
+                android:id="@+id/tv_total_day_not_filterd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/tv_total_not_filter_title"
+                app:layout_constraintTop_toTopOf="@id/tv_total_not_filter_title"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_total_not_filter_title"
+                android:text="1 Ngày"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_total_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="0"
+                android:textStyle="bold"
+                android:textSize="120sp"
+                android:fontFamily="monospace"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="50dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày"
+                app:layout_constraintLeft_toRightOf="@id/tv_total_day"
+                app:layout_constraintBottom_toBottomOf="@id/tv_total_day"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tv_summary_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đã trừ ra các ngày"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_total_day"/>
+
+
+            <TextView
+                android:id="@+id/tv_total_weekend_title_t7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thứ 7: "
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_summary_title"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"/>
+
+
+            <TextView
+                android:id="@+id/tv_total_weekend_t7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 Ngày"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="@id/tv_total_weekend_title_t7"
+                app:layout_constraintBottom_toBottomOf="@id/tv_total_weekend_title_t7"
+                app:layout_constraintLeft_toRightOf="@id/barrier"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/tv_total_weekend_title_cn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chủ nhật: "
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="@id/tv_total_weekend_title_t7"
+                app:layout_constraintLeft_toRightOf="@id/guideline3"
+                android:layout_marginLeft="15dp"/>
+
+
+            <TextView
+                android:id="@+id/tv_total_weekend_cn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 Ngày"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="@id/tv_total_weekend_title_cn"
+                app:layout_constraintBottom_toBottomOf="@id/tv_total_weekend_title_cn"
+                app:layout_constraintLeft_toRightOf="@id/tv_total_weekend_title_cn"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/tv_total_holiday_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày lễ: "
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_total_weekend_title_cn"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/tv_total_holiday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 Ngày"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="@id/tv_total_holiday_title"
+                app:layout_constraintBottom_toBottomOf="@id/tv_total_holiday_title"
+                app:layout_constraintLeft_toRightOf="@id/barrier"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"/>
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="right"
+                app:constraint_referenced_ids="tv_total_weekend_title_t7, tv_total_holiday_title"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
