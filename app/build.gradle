@@ -11,8 +11,8 @@ android {
         applicationId "com.thanh.dates_between"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 1
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

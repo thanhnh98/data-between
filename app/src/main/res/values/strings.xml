@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dates Between</string>
+    <string name="app_name">Tính ngày</string>
     <string name="copy_to_clipboard">Copy</string>
     <string name="history">History:</string>
     <string name="clear_all">Clear all</string>

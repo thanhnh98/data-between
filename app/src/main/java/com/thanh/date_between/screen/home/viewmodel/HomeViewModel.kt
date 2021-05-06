@@ -65,7 +65,7 @@ class HomeViewModel: BaseViewModel() {
         initValue()
     }
 
-    private fun initValue(){
+    fun initValue(){
         val c: Calendar = Calendar.getInstance()
         val mYear = c.get(Calendar.YEAR)
         val mMonth = c.get(Calendar.MONTH)

@@ -32,6 +32,7 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
     }
 
     private fun initUI() {
+        viewModel.initValue()
         dataBinding.cbWeekendT7.isChecked = true
         dataBinding.cbWeekendCn.isChecked = true
         dataBinding.cbHoliday.isChecked = true

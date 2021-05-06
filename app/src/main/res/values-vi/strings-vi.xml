@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dates Between</string>
+    <string name="app_name">Tính ngày</string>
     <string name="copy_to_clipboard">Sao chép</string>
     <string name="history">Lịch sử truy cập:</string>
     <string name="clear_all">Xoá tất cả</string>
