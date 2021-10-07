@@ -2,11 +2,8 @@ package com.thanh.date_between.screen.home
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import com.thanh.date_between.R

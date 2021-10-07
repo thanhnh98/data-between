@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import bindViewModel
 import com.thanh.date_between.common.base.BaseViewModel
 import com.thanh.date_between.screen.home.viewmodel.HomeViewModel
+import com.thanh.date_between.screen.sat_sun.ViewDetailDatesViewModel
 import com.thanh.date_between.usecase.UrlUseCase
 import org.kodein.di.Kodein
 import org.kodein.di.direct
@@ -17,6 +18,7 @@ val viewModelModule = Kodein.Module("VIEWMODEL_MODULE", false) {
     bind<ViewModelProvider.Factory>() with singleton { ViewModelFactory(kodein.direct) }
 
     bindViewModel<HomeViewModel>() with singleton { createHomeViewModel() }
+    bindViewModel<ViewDetailDatesViewModel>() with singleton { ViewDetailDatesViewModel() }
 }
 
 fun createHomeViewModel(): HomeViewModel{

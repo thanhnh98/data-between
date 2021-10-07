@@ -154,6 +154,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Thứ 7"/>
+
+                    <TextView
+                        android:id="@+id/tv_view_detail_saturday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chi tiết"
+                        android:layout_marginLeft="6dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/md_blue_500"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -173,6 +182,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Chủ nhật"/>
+
+                    <TextView
+                        android:id="@+id/tv_view_detail_sunday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chi tiết"
+                        android:layout_marginLeft="6dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/md_blue_500"/>
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
