@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class com.google.** { *; }
+-keep class com.github.** { *; }
+-keep class com.android.** { *; }
+-keep class junit.** { *; }
+-keep class com.example.com.mymodels.** { *; }
+-keepclassmembers class com.thanh.date_between.** { *; }

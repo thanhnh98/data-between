@@ -18,7 +18,7 @@ class DateBetweenApplication: Application(), LifecycleObserver, KodeinAware {
     override fun onCreate() {
         Resources.init(this)
         AppPreferences.init(this)
-        AppDatabase.init(this)
+        //AppDatabase.init(this)
         super.onCreate()
     }
 

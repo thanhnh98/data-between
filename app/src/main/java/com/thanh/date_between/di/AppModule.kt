@@ -42,9 +42,9 @@ val appModule = Kodein.Module("APP_MODULE", false) {
         createAppPreferences()
     }
 
-    bind() from singleton {
-        createAppDatabase()
-    }
+//    bind() from singleton {
+//        createAppDatabase()
+//    }
 }
 
 fun requestInterceptor() = RequestInterceptor()
@@ -71,4 +71,4 @@ fun createAppResources() = Resources.getResources()
 
 fun createAppPreferences() = AppPreferences.getInstance()
 
-fun createAppDatabase() = AppDatabase.getInstance()
+//fun createAppDatabase() = AppDatabase.getInstance()

@@ -34,12 +34,12 @@ class AppPreferences(context: Context?) {
         }
     }
 
-    fun setListHoliday(listData: List<DateModel>?){
+    private fun setListHoliday(listData: List<DateModel>?){
         if (listData == null)
             return
         mPreferences.edit().apply {
             putString(LIST_HOLIDAY, Gson().toJson(listData))
-            commit()
+            apply()
         }
     }
 
