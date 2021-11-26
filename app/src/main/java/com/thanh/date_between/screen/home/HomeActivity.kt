@@ -6,7 +6,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
 import com.thanh.date_between.R
+import com.thanh.date_between.common.AdsManager
 import com.thanh.date_between.common.base.BaseActivity
 import com.thanh.date_between.databinding.ActivityHomeBinding
 import com.thanh.date_between.extension.onClick
@@ -15,10 +19,12 @@ import com.thanh.date_between.model.DateModel
 import com.thanh.date_between.screen.edit_holiday.EditListHolidayActivity
 import com.thanh.date_between.screen.home.viewmodel.HomeViewModel
 import kodeinViewModel
+import org.kodein.di.generic.instance
 import java.time.DayOfWeek
 
 class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
 
+    private val adsManager: AdsManager by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +32,30 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
         initCluster()
         initListener()
         initObservers()
+        initAds()
+        adsManager.prepareAds()
+    }
+
+    private fun initAds() {
+        dataBinding.adView.adListener = object: AdListener() {
+            override fun onAdLoaded() {
+            }
+
+            override fun onAdFailedToLoad(adError : LoadAdError) {
+            }
+
+            override fun onAdOpened() {
+            }
+
+            override fun onAdClicked() {
+            }
+
+            override fun onAdClosed() {
+            }
+        }
+
+        val adRequest = AdRequest.Builder().build()
+        dataBinding.adView.loadAd(adRequest)
     }
 
     private fun initUI() {
@@ -122,7 +152,18 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
         }
 
         dataBinding.imgEditListHoliday.onClick {
-            startActivity(Intent(this, EditListHolidayActivity::class.java))
+            adsManager.show(
+                this,
+                onFailedToShow = {
+                    startActivity(Intent(this, EditListHolidayActivity::class.java))
+                },
+                onDismiss = {
+                    startActivity(Intent(this, EditListHolidayActivity::class.java))
+                },
+                onOtherException = {
+                    startActivity(Intent(this, EditListHolidayActivity::class.java))
+                }
+            )
         }
     }
 

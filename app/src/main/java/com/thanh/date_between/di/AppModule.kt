@@ -1,6 +1,7 @@
 package com.thanh.date_between.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.thanh.date_between.common.AdsManager
 import com.thanh.date_between.common.resources.Resources
 import com.thanh.date_between.config.Configs
 import com.thanh.date_between.network.RequestInterceptor
@@ -40,6 +41,10 @@ val appModule = Kodein.Module("APP_MODULE", false) {
 
     bind() from singleton {
         createAppPreferences()
+    }
+
+    bind() from singleton {
+        AdsManager(instance())
     }
 
 //    bind() from singleton {

@@ -18,4 +18,6 @@
     <string name="mode_deep_link">Deeplink</string>
     <string name="mode_universal_link">Universal link</string>
     <string name="mode_other">Khác</string>
+    <string name="key_ads_interstitial">ca-app-pub-3395045728500314/5753502556</string>
+    <string name="key_ads_banner">ca-app-pub-3395045728500314/5496505771</string>
 </resources>

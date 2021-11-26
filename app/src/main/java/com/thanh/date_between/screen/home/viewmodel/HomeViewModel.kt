@@ -154,7 +154,7 @@ class HomeViewModel: BaseViewModel() {
                         year = it.year,
                         dayOfWeek = it.dayOfWeek
                     )
-                    Log.e(date.getDateHolidayFormat(), dateModel.getDateHolidayFormat())
+//                    Log.e(date.getDateHolidayFormat(), dateModel.getDateHolidayFormat())
                     if (date.getDateHolidayFormat() == dateModel.getDateHolidayFormat()) {
                         listHolidayFiltered.add(dateModel)
                         return@filter false

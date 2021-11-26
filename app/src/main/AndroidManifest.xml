@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.thanh.date_between">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.thanh.date_between.app.DateBetweenApplication"
@@ -12,12 +11,18 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
+        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3395045728500314~9554637452"/>
 
         <activity android:name="com.thanh.date_between.screen.home.HomeActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
+            android:hardwareAccelerated="true"
             >
 
         </activity>
@@ -26,6 +31,7 @@
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
+            android:hardwareAccelerated="false"
             >
         </activity>
 
@@ -37,7 +43,9 @@
         <activity android:name="com.thanh.date_between.screen.splash.SplashScreen"
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true"
+            android:hardwareAccelerated="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
