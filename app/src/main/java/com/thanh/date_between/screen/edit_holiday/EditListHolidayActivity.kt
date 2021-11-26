@@ -3,6 +3,9 @@ package com.thanh.date_between.screen.edit_holiday
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
 import com.google.gson.Gson
 import com.thanh.date_between.R
 import com.thanh.date_between.common.NormalizeHelper
@@ -34,6 +37,28 @@ class EditListHolidayActivity: BaseActivity<ActivityEditListHolidayBinding, Home
         initListener()
         initObservers()
         setupRecyclerView()
+        setupAds()
+    }
+
+    private fun setupAds() {
+        val adRequest = AdRequest.Builder().build()
+        dataBinding.adView.loadAd(adRequest)
+        dataBinding.adView.adListener = object: AdListener() {
+            override fun onAdLoaded() {
+            }
+
+            override fun onAdFailedToLoad(adError : LoadAdError) {
+            }
+
+            override fun onAdOpened() {
+            }
+
+            override fun onAdClicked() {
+            }
+
+            override fun onAdClosed() {
+            }
+        }
     }
 
     private fun setupRecyclerView() {

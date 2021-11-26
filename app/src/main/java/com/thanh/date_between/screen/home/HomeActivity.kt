@@ -37,6 +37,8 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
     }
 
     private fun initAds() {
+        val adRequest = AdRequest.Builder().build()
+        dataBinding.adView.loadAd(adRequest)
         dataBinding.adView.adListener = object: AdListener() {
             override fun onAdLoaded() {
             }
@@ -53,9 +55,6 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
             override fun onAdClosed() {
             }
         }
-
-        val adRequest = AdRequest.Builder().build()
-        dataBinding.adView.loadAd(adRequest)
     }
 
     private fun initUI() {
