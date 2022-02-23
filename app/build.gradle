@@ -6,10 +6,10 @@ apply plugin: 'kotlin-kapt'
 android {
     signingConfigs {
         release {
-            storeFile file('C:\\Users\\Thanh\\test.jks')
+            storeFile file('D:\\Github\\tinh-ngay-key-store\\tinhngay.jks')
             storePassword '123456'
-            keyAlias 'Key0'
-            keyPassword '123456'
+            keyAlias 'key0'
+            keyPassword 'thanhnh98'
         }
     }
     compileSdkVersion 31
@@ -27,15 +27,17 @@ android {
 
     buildTypes {
         release {
-            debuggable false
+            debuggable true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
 
         debug {
             debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -55,7 +57,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(":permission_manager")
+//    implementation project(":permission_manager")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.core:core-ktx:1.0.2'

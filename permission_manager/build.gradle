@@ -7,6 +7,15 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    signingConfigs {
+    release {
+    storeFile file('D:\\Github\\tinh-ngay-key-store\\tinhngay.jks')
+        storePassword 'thanhnh'
+        keyAlias 'key0'
+        keyPassword 'thanhnh'
+    }
+    }
+
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30

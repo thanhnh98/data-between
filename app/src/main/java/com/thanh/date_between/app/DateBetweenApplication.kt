@@ -24,7 +24,7 @@ class DateBetweenApplication: Application(), LifecycleObserver, KodeinAware {
         MobileAds.initialize(this){
             Log.e("Inited","init")
         }
-        val testDeviceIds = listOf("2D754340943AB2A524632B55EEC48816")
+        val testDeviceIds = listOf("2D754340943AB2A524632B55EEC48816", "692A3CF32D14F5E7FEA5855C9E8DE0D7")
         val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
         MobileAds.setRequestConfiguration(configuration)
         super.onCreate()

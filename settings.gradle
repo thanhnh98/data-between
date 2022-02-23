@@ -1,3 +1,2 @@
-include ':permission_manager'
 rootProject.name='Deeplink Plus'
 include ':app'
