@@ -27,7 +27,7 @@ class EditListHolidayActivity: BaseActivity<ActivityEditListHolidayBinding, Home
     private lateinit var mRecyclerManager: RecyclerManager<KClass<*>>
 
     override val layoutResId: Int = R.layout.activity_edit_list_holiday
-    override val initViewModel: HomeViewModel by kodeinViewModel()
+    override val viewModel: HomeViewModel by kodeinViewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,28 +38,28 @@ class EditListHolidayActivity: BaseActivity<ActivityEditListHolidayBinding, Home
         initObservers()
         setupRecyclerView()
         setupAds()
-    }
+        }
 
-    private fun setupAds() {
-        val adRequest = AdRequest.Builder().build()
-        dataBinding.adView.loadAd(adRequest)
-        dataBinding.adView.adListener = object: AdListener() {
-            override fun onAdLoaded() {
-            }
+        private fun setupAds() {
+            val adRequest = AdRequest.Builder().build()
+            dataBinding.adView.loadAd(adRequest)
+            dataBinding.adView.adListener = object: AdListener() {
+                override fun onAdLoaded() {
+                }
 
-            override fun onAdFailedToLoad(adError : LoadAdError) {
-            }
+                override fun onAdFailedToLoad(adError : LoadAdError) {
+                }
 
-            override fun onAdOpened() {
-            }
+                override fun onAdOpened() {
+                }
 
-            override fun onAdClicked() {
-            }
+                override fun onAdClicked() {
+                }
 
-            override fun onAdClosed() {
+                override fun onAdClosed() {
+                }
             }
         }
-    }
 
     private fun setupRecyclerView() {
         dataBinding.recyclerView.adapter = mRecyclerManager.adapter
@@ -93,13 +93,13 @@ class EditListHolidayActivity: BaseActivity<ActivityEditListHolidayBinding, Home
     }
 
     private fun initObservers() {
-        viewModel.onTotalDatesCalculated().observe(this, {
+        viewModel.onTotalDatesCalculated().observe(this) {
 
-        })
+        }
 
-        viewModel.onListHolidayChanged().observe(this,{
+        viewModel.onListHolidayChanged().observe(this) {
             showListItem()
-        })
+        }
     }
 
     private fun initUI() {

@@ -18,6 +18,7 @@ import com.thanh.date_between.extension.twoNumberOf
 import com.thanh.date_between.model.DateModel
 import com.thanh.date_between.screen.edit_holiday.EditListHolidayActivity
 import com.thanh.date_between.screen.home.viewmodel.HomeViewModel
+import com.thanh.date_between.screen.sat_sun.ViewDetailDatesActivity
 import kodeinViewModel
 import org.kodein.di.generic.instance
 import java.time.DayOfWeek
@@ -108,17 +109,20 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
                 }).show()
         })
 
-        viewModel.onTotalDatesCalculated().observe(this, {
+        viewModel.onTotalDatesCalculated().observe(this) {
             dataBinding.tvTotalDay.text = it.first.size.twoNumberOf()
-            dataBinding.tvTotalWeekendT7.text = it.second.filter { it.dayOfWeek == DayOfWeek.SATURDAY }.size.twoNumberOf() + " ngày"
-            dataBinding.tvTotalWeekendCn.text = it.second.filter { it.dayOfWeek == DayOfWeek.SUNDAY }.size.twoNumberOf() + " ngày"
+            dataBinding.tvTotalWeekendT7.text =
+                it.second.filter { it.dayOfWeek == DayOfWeek.SATURDAY }.size.twoNumberOf() + " ngày"
+            dataBinding.tvTotalWeekendCn.text =
+                it.second.filter { it.dayOfWeek == DayOfWeek.SUNDAY }.size.twoNumberOf() + " ngày"
             dataBinding.tvTotalHoliday.text = it.third.size.twoNumberOf() + " ngày"
-            dataBinding.tvTotalDayNotFilterd.text = (it.first.size + it.second.size + it.third.size).twoNumberOf() + " ngày"
-        })
+            dataBinding.tvTotalDayNotFilterd.text =
+                (it.first.size + it.second.size + it.third.size).twoNumberOf() + " ngày"
+        }
 
-        viewModel.onListHolidayChanged().observe(this, {
+        viewModel.onListHolidayChanged().observe(this) {
             viewModel.calculate()
-        })
+        }
     }
 
     private fun initListener() {
@@ -164,6 +168,25 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
                 }
             )
         }
+
+        dataBinding.tvViewDetailSaturday.onClick {
+            startActivity(
+                ViewDetailDatesActivity(
+                    this,
+                    DayOfWeek.SATURDAY
+                )
+            )
+        }
+
+        dataBinding.tvViewDetailSunday.onClick {
+            startActivity(
+                ViewDetailDatesActivity(
+                    this,
+                    DayOfWeek.SUNDAY
+                )
+            )
+        }
+
     }
 
     private fun initCluster() {
@@ -175,7 +198,7 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
 
     override val layoutResId: Int = R.layout.activity_home
 
-    override val initViewModel: HomeViewModel by kodeinViewModel()
+    override val viewModel: HomeViewModel by kodeinViewModel()
 
     override fun onResume() {
         super.onResume()

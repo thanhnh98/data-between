@@ -8,7 +8,10 @@ import com.thanh.date_between.common.adapter.item.RecycleViewItem
 import com.thanh.date_between.extension.onClick
 import com.thanh.date_between.model.DateModel
 
-class HolidayItem(private val date: DateModel, val onDeleteItem: (position: Int, date: DateModel) -> Unit) : RecycleViewItem<HolidayVH>(){
+class HolidayItem(
+    private val date: DateModel,
+    private val onDeleteItem: (position: Int, date: DateModel) -> Unit
+) : RecycleViewItem<HolidayVH>(){
     override fun bind(viewHolder: HolidayVH) {
         viewHolder.tvDate.text = date.getDateHolidayFormat()
         viewHolder.tvDescription.text = date.dayInfo

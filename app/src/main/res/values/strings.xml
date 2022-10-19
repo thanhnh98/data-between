@@ -21,4 +21,5 @@
     <string name="key_ads_interstitial">ca-app-pub-3395045728500314/5753502556</string>
     <string name="key_ads_banner">ca-app-pub-3395045728500314/5496505771</string>
     <string name="key_ads_banner_2">ca-app-pub-3395045728500314/2129758793</string>
+    <string name="key_ads_banner_dayweek">ca-app-pub-3395045728500314/4017657786</string>
 </resources>

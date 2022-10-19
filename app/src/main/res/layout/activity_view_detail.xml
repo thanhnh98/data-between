@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:fab="http://schemas.android.com/apk/res-auto">
+<layout xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,7 +11,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Danh sách ngày lễ"
+            tools:text="Danh sách ngày CN"
             android:textSize="24sp"
             android:textStyle="bold"
             android:padding="10dp"
@@ -25,6 +26,17 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             fab:layout_constraintTop_toBottomOf="@id/tv_title"
-            fab:layout_constraintBottom_toBottomOf="parent"/>
+            fab:layout_constraintBottom_toTopOf="@id/adView"/>
+
+
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/key_ads_banner_dayweek"
+            ads:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

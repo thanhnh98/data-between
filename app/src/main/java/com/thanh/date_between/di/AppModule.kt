@@ -12,6 +12,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
+import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -43,7 +44,7 @@ val appModule = Kodein.Module("APP_MODULE", false) {
         createAppPreferences()
     }
 
-    bind() from singleton {
+    bind() from provider {
         AdsManager(instance())
     }
 

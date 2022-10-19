@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.thanh.date_between.common.SingleLiveEvent
 import com.thanh.date_between.common.base.BaseViewModel
 import com.thanh.date_between.model.DateModel
+import com.thanh.date_between.model.DateType
 import com.thanh.date_between.storage.AppPreferences
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -171,11 +172,9 @@ class HomeViewModel: BaseViewModel() {
     fun calculate(){
         if (!validateBefore())
             return
-
         excuteCalcuation()
         totalDatesAcceptedCalculatedEvent.postValue(Triple(listDayRemainAccepted, listWeekendFiltered, listHolidayFiltered))
     }
-
 
     fun requestChangeBeginDate(){
         onRequestChangeBeginDate.postValue(beginDateEvent.value)
@@ -220,6 +219,14 @@ class HomeViewModel: BaseViewModel() {
 
     fun getListHoliday(): List<DateModel>{
         return AppPreferences.getInstance().getListHoliday()
+    }
+
+
+    fun getListDate(dayOfWeek: DayOfWeek): List<DateModel>?{
+        val totalDate = totalDatesAcceptedCalculatedEvent.value?.second
+        return totalDate?.filter {
+            it.dayOfWeek == dayOfWeek
+        }
     }
 
     fun addHoliday(date: DateModel){
