@@ -2,9 +2,15 @@ package com.thanh.date_between.screen.home
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.PopupWindow
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
@@ -12,9 +18,11 @@ import com.google.android.gms.ads.LoadAdError
 import com.thanh.date_between.R
 import com.thanh.date_between.common.AdsManager
 import com.thanh.date_between.common.base.BaseActivity
+import com.thanh.date_between.convertDpToPixel
 import com.thanh.date_between.databinding.ActivityHomeBinding
 import com.thanh.date_between.extension.onClick
 import com.thanh.date_between.extension.twoNumberOf
+import com.thanh.date_between.getScreenHeight
 import com.thanh.date_between.model.DateModel
 import com.thanh.date_between.screen.edit_holiday.EditListHolidayActivity
 import com.thanh.date_between.screen.home.viewmodel.HomeViewModel
@@ -63,8 +71,52 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
         dataBinding.cbWeekendT7.isChecked = true
         dataBinding.cbWeekendCn.isChecked = true
         dataBinding.cbHoliday.isChecked = true
+        dataBinding.imgMenu.onClick {
+            showPopup(it)
+        }
     }
 
+    private fun showPopup(viewCall: View) {
+        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupLayout = inflater.inflate(R.layout.popup_menu, null)
+        val popupWidth = resources.getDimensionPixelSize(R.dimen.popup_width)
+        val popupHeight = resources.getDimensionPixelSize(R.dimen.popup_height)
+        val popupWindow = PopupWindow(
+            popupLayout,
+            popupWidth,
+            popupHeight,
+            true
+        )
+
+        popupLayout.findViewById<TextView>(R.id.tv_other_apps).onClick {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=5540559479839330036")))
+            popupWindow.dismiss()
+        }
+
+        popupLayout.findViewById<TextView>(R.id.tv_rating).onClick {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+            popupWindow.dismiss()
+        }
+
+        //show popup menu
+        val values = IntArray(2)
+        viewCall.getLocationInWindow(values)
+        val positionOfIcon = values[1]
+        val height = getScreenHeight() * 2 / 3
+        if (positionOfIcon > height) {
+            // when parent view in the bottom of the screen show popup up
+            val offsetY = resources.getDimensionPixelSize(R.dimen._200dp)
+            popupWindow.showAsDropDown(viewCall, 0, -offsetY, Gravity.END)
+        } else {
+            // when parent view in the bottom of the screen show popup down
+            popupWindow.showAsDropDown(
+                viewCall,
+                0,
+                convertDpToPixel(8F, this).toInt(),
+                Gravity.END
+            )
+        }
+    }
 
 
     private fun getDatePickerDialog(dateDefault: DateModel, listener: OnDateSetListener): DatePickerDialog{

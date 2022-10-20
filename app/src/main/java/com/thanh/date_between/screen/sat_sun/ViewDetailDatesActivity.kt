@@ -3,7 +3,6 @@ package com.thanh.date_between.screen.sat_sun
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.AdListener
@@ -17,13 +16,13 @@ import com.thanh.date_between.common.adapter.item.RecycleViewItem
 import com.thanh.date_between.common.adapter.item.spacing.SpacingRecyclerItem
 import com.thanh.date_between.common.base.BaseActivity
 import com.thanh.date_between.databinding.ActivityViewDetailBinding
-import com.thanh.date_between.screen.edit_holiday.item.HolidayItem
 import com.thanh.date_between.screen.home.viewmodel.HomeViewModel
 import com.thanh.date_between.screen.sat_sun.item.DetailItem
 import kodeinViewModel
 import org.kodein.di.generic.instance
 import java.time.DayOfWeek
 import kotlin.reflect.KClass
+
 
 class ViewDetailDatesActivity: BaseActivity<ActivityViewDetailBinding, HomeViewModel>() {
     companion object {
@@ -58,7 +57,6 @@ class ViewDetailDatesActivity: BaseActivity<ActivityViewDetailBinding, HomeViewM
         initUI()
         setupRecyclerView()
     }
-
 
     private fun setupAds() {
         val adRequest = AdRequest.Builder().build()

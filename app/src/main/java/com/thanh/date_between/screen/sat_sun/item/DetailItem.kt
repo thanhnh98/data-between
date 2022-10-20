@@ -13,7 +13,7 @@ class DetailItem(
     private val date: DateModel
 ): RecycleViewItem<DetailItemVH>() {
     override fun bind(viewHolder: DetailItemVH?) {
-        viewHolder?.tvDate?.text = date.getDateLocalFormat()
+        viewHolder?.tvDate?.text = date.toString()
     }
 
     override fun createViewHolder(context: Context?): RecyclerView.ViewHolder {
