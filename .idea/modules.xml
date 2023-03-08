@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Deeplink_Plus.iml" filepath="$PROJECT_DIR$/.idea/modules/Deeplink_Plus.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Deeplink_Plus.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Deeplink_Plus.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/permission_manager/Deeplink_Plus.permission_manager.iml" filepath="$PROJECT_DIR$/.idea/modules/permission_manager/Deeplink_Plus.permission_manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Date_Between.iml" filepath="$PROJECT_DIR$/.idea/modules/Date_Between.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Date_Between.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Date_Between.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Date_Between.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Date_Between.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Date_Between.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Date_Between.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Date_Between.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Date_Between.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nativetemplates/Date_Between.nativetemplates.iml" filepath="$PROJECT_DIR$/.idea/modules/nativetemplates/Date_Between.nativetemplates.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nativetemplates/Date_Between.nativetemplates.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/nativetemplates/Date_Between.nativetemplates.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nativetemplates/Date_Between.nativetemplates.main.iml" filepath="$PROJECT_DIR$/.idea/modules/nativetemplates/Date_Between.nativetemplates.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nativetemplates/Date_Between.nativetemplates.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/nativetemplates/Date_Between.nativetemplates.unitTest.iml" />
     </modules>
   </component>
 </project>

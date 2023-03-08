@@ -24,7 +24,11 @@ class DateBetweenApplication: Application(), LifecycleObserver, KodeinAware {
         MobileAds.initialize(this){
             Log.e("Inited","init")
         }
-        val testDeviceIds = listOf("2D754340943AB2A524632B55EEC48816", "692A3CF32D14F5E7FEA5855C9E8DE0D7")
+        val testDeviceIds = listOf(
+            "2D754340943AB2A524632B55EEC48816",
+            "692A3CF32D14F5E7FEA5855C9E8DE0D7",
+            "B3EEABB8EE11C2BE770B684D95219ECB",
+        )
         val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
         MobileAds.setRequestConfiguration(configuration)
         super.onCreate()
@@ -34,7 +38,6 @@ class DateBetweenApplication: Application(), LifecycleObserver, KodeinAware {
         import(androidXModule((this@DateBetweenApplication)))
         import(appModule)
         import(serviceModule)
-        import(useCaseModule)
         import(viewModelModule)
     }
 }

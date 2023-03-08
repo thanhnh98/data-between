@@ -1,2 +1,3 @@
-rootProject.name='Deeplink Plus'
+rootProject.name='Date Between'
 include ':app'
+include ':nativetemplates'

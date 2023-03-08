@@ -1,9 +1,11 @@
 package com.thanh.date_between.screen.home
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
@@ -11,10 +13,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
+import com.google.android.ads.nativetemplates.NativeTemplateStyle
+import com.google.android.ads.nativetemplates.TemplateView
 import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.nativead.NativeAd
 import com.thanh.date_between.R
 import com.thanh.date_between.common.AdsManager
 import com.thanh.date_between.common.base.BaseActivity
@@ -41,29 +48,29 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
         initCluster()
         initListener()
         initObservers()
-        initAds()
-        adsManager.prepareAds()
+        prepareAds()
     }
 
-    private fun initAds() {
-        val adRequest = AdRequest.Builder().build()
-        dataBinding.adView.loadAd(adRequest)
-        dataBinding.adView.adListener = object: AdListener() {
-            override fun onAdLoaded() {
+    private var nativeAds: NativeAd? = null
+    @SuppressLint("MissingPermission")
+    private fun prepareAds() {
+        val adLoader: AdLoader = AdLoader.Builder(this, getString(R.string.key_ads_native_1))
+            .forNativeAd { nativeAd ->
+                this.nativeAds = nativeAd
+                val styles = NativeTemplateStyle.Builder().withMainBackgroundColor(
+                    ColorDrawable(
+                        ResourcesCompat.getColor(resources, R.color.white, null)
+                    )
+                )
+                    .build()
+                val template: TemplateView = dataBinding.adsTemplate
+                template.visibility = View.VISIBLE
+                template.setStyles(styles)
+                template.setNativeAd(nativeAd)
             }
+            .build()
 
-            override fun onAdFailedToLoad(adError : LoadAdError) {
-            }
-
-            override fun onAdOpened() {
-            }
-
-            override fun onAdClicked() {
-            }
-
-            override fun onAdClosed() {
-            }
-        }
+        adLoader.loadAd(AdRequest.Builder().build())
     }
 
     private fun initUI() {
@@ -255,5 +262,10 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>(){
     override fun onResume() {
         super.onResume()
         viewModel.calculate()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        nativeAds?.destroy()
     }
 }

@@ -270,16 +270,15 @@
             app:layout_constraintRight_toRightOf="parent"
             />
 
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
+        <com.google.android.ads.nativetemplates.TemplateView
+            android:id="@+id/ads_template"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/key_ads_banner"
-            ads:layout_constraintBottom_toBottomOf="parent">
-
-        </com.google.android.gms.ads.AdView>
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:gnt_template_type="@layout/gnt_small_template_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
@@ -287,7 +286,7 @@
             app:layout_constraintTop_toBottomOf="@id/guideline1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/adView"
+            app:layout_constraintBottom_toTopOf="@id/ads_template"
             android:background="@drawable/bg_border_white_primary_dark"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"

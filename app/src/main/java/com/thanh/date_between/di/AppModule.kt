@@ -6,7 +6,6 @@ import com.thanh.date_between.common.resources.Resources
 import com.thanh.date_between.config.Configs
 import com.thanh.date_between.network.RequestInterceptor
 import com.thanh.date_between.storage.AppPreferences
-import com.thanh.date_between.storage.local_db.database.AppDatabase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.Kodein

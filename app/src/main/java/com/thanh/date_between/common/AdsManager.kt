@@ -47,7 +47,7 @@ class AdsManager(private val context: Context) {
                 onDismiss?.invoke()
             }
 
-            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                 onFailedToShow?.invoke()
             }
 

@@ -1,13 +1,21 @@
 package com.thanh.date_between.screen.sat_sun
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.View
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.ads.nativetemplates.NativeTemplateStyle
+import com.google.android.ads.nativetemplates.TemplateView
 import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.nativead.NativeAd
 import com.thanh.date_between.R
 import com.thanh.date_between.common.AdsManager
 import com.thanh.date_between.common.NormalizeHelper
@@ -16,6 +24,7 @@ import com.thanh.date_between.common.adapter.item.RecycleViewItem
 import com.thanh.date_between.common.adapter.item.spacing.SpacingRecyclerItem
 import com.thanh.date_between.common.base.BaseActivity
 import com.thanh.date_between.databinding.ActivityViewDetailBinding
+import com.thanh.date_between.extension.onClick
 import com.thanh.date_between.screen.home.viewmodel.HomeViewModel
 import com.thanh.date_between.screen.sat_sun.item.DetailItem
 import kodeinViewModel
@@ -56,27 +65,30 @@ class ViewDetailDatesActivity: BaseActivity<ActivityViewDetailBinding, HomeViewM
         initCluster()
         initUI()
         setupRecyclerView()
+        prepareAds()
     }
 
-    private fun setupAds() {
-        val adRequest = AdRequest.Builder().build()
-        dataBinding.adView.loadAd(adRequest)
-        dataBinding.adView.adListener = object: AdListener() {
-            override fun onAdLoaded() {
-            }
 
-            override fun onAdFailedToLoad(adError : LoadAdError) {
+    private var nativeAds: NativeAd? = null
+    @SuppressLint("MissingPermission")
+    private fun prepareAds() {
+        val adLoader: AdLoader = AdLoader.Builder(this, getString(R.string.key_ads_banner_2))
+            .forNativeAd { nativeAd ->
+                this.nativeAds = nativeAd
+                val styles = NativeTemplateStyle.Builder().withMainBackgroundColor(
+                    ColorDrawable(
+                        ResourcesCompat.getColor(resources, R.color.white, null)
+                    )
+                )
+                    .build()
+                val template: TemplateView = dataBinding.adsTemplate
+                template.visibility = View.VISIBLE
+                template.setStyles(styles)
+                template.setNativeAd(nativeAd)
             }
+            .build()
 
-            override fun onAdOpened() {
-            }
-
-            override fun onAdClicked() {
-            }
-
-            override fun onAdClosed() {
-            }
-        }
+        adLoader.loadAd(AdRequest.Builder().build())
     }
 
     private fun initCluster() {
@@ -90,6 +102,9 @@ class ViewDetailDatesActivity: BaseActivity<ActivityViewDetailBinding, HomeViewM
     }
 
     private fun initUI() {
+        dataBinding.icBack.onClick {
+            finish()
+        }
         when (dayOfWeek){
             DayOfWeek.SATURDAY -> {
                 dataBinding.tvTitle.text = "Danh sách ngày Thứ 7"
@@ -101,7 +116,6 @@ class ViewDetailDatesActivity: BaseActivity<ActivityViewDetailBinding, HomeViewM
 
             }
         }
-        setupAds()
     }
 
     private fun showListItem() {
@@ -116,5 +130,10 @@ class ViewDetailDatesActivity: BaseActivity<ActivityViewDetailBinding, HomeViewM
         }
         listItem.add(SpacingRecyclerItem(NormalizeHelper.convertDpToPixel(80), 0))
         return listItem
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        nativeAds?.destroy()
     }
 }
